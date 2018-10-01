@@ -20,7 +20,8 @@
     "less": "^3.8.1",
     "mongoose": "^5.2.17",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-masonry-component": "^6.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

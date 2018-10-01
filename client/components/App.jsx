@@ -11,7 +11,7 @@ import './App.less';
 function getStateFromFlux(){
   return {
     isLoading: NotesStore.isLoading(),
-    notes: NotesStore.getNotes()
+    notes: [].concat(NotesStore.getNotes())
   };
 }
 
@@ -38,12 +38,16 @@ class App extends Component{
     NotesActions.createNote(data);
   }
 
+  handleNoteDelete(note){
+    NotesActions.deleteNote(note.id);
+  }
+
   render(){
     return (
       <div className="App">
         <h2 className="App__header">NotesApp</h2>
         <NoteEditor onNoteAdd={this.handleNoteAdd}/>
-        <NotesGrid />
+        <NotesGrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete}/>
       </div>
       );
   }
