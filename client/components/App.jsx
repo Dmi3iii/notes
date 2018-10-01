@@ -19,6 +19,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state=getStateFromFlux();
+    this._onChange = this._onChange.bind(this);
   }
 
   componentWillMount(){

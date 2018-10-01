@@ -19,7 +19,7 @@ function formatNote(note){
   });
 }
 
-const TaskStore = Object.assign({},EventEmmiter.prototype,{
+const TasksStore = Object.assign({},EventEmitter.prototype,{
   isLoading(){
     return _isLoading;
   },
@@ -37,7 +37,7 @@ const TaskStore = Object.assign({},EventEmmiter.prototype,{
   }
 });
 
-AppDispatcner.register(function(action){
+AppDispatcher.register(function(action){
   switch(action.type){
     case AppConstants.LOAD_NOTES_REQUEST:{
       _isLoading=true;
@@ -64,4 +64,4 @@ AppDispatcner.register(function(action){
   }
 });
 
-export default TaskStore;
+export default TasksStore;

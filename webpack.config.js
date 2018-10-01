@@ -12,8 +12,13 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader",
-                exclude: [/node_modules/, /public/]
+                exclude: [/node_modules/, /public/],
+                use:
+                  { loader: 'babel-loader',
+                    options: {
+                      presets: ['env','react']
+                  }
+                }
             },
             {
                 test: /\.css$/,
@@ -44,12 +49,12 @@ module.exports = {
             {
                 test: /\.jsx$/,
                 loader: "react-hot-loader-loader!babel-loader",
-                exclude: [/node_modules/, /public/]
-            },
+                exclude: [/node_modules/, /public/]                
+            }/*,
             {
                 test: /\.json$/,
                 loader: "json-loader"
-            }
+            }*/
         ]
     }
 }
