@@ -9,7 +9,7 @@ class NotesGrid extends React.Component{
       const masonryOptions={
         itemSelector: '.Note',
         columnWidth: 250,
-        guffer: 10,
+        gutter: 10,
         isFitWidth: true
       };
 

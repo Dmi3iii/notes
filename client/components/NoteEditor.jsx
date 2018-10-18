@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ColorPicker from './ColorPicker.jsx'
 
 import './NoteEditor.less';
 
@@ -13,6 +14,7 @@ class NoteEditor extends Component{
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleNoteAdd = this.handleNoteAdd.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
   }
 
   handleTextChange(event) {
@@ -34,6 +36,9 @@ class NoteEditor extends Component{
     this.setState({text:'',title:'',color:'#FFFFFF'});
   }
 
+  handleColorChange(color){
+    this.setState({color});
+  }
   render(){
     return (
       <div className="NoteEditor">
@@ -52,6 +57,10 @@ class NoteEditor extends Component{
             onChange={this.handleTextChange}
         />
         <div className='NoteEditor__footer'>
+          <ColorPicker
+            value={this.state.color}
+            onChange={this.handleColorChange}
+          />
           <button
             className='NoteEditor__button'
             disabled={!(this.state.text && this.state.title)}

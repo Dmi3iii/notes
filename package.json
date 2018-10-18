@@ -6,6 +6,7 @@
   "scripts": {
     "start-babel": "babel-node ./server/app.js --presets env,react",
     "start-wp": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 3000 --host 0.0.0.0",
+    "build": "webpack --progress --colors --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,6 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "classnames": "^2.2.6",
     "events": "^3.0.0",
     "express": "^4.16.3",
     "flux": "^3.1.3",

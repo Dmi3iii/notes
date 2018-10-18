@@ -11,7 +11,7 @@ import './App.less';
 function getStateFromFlux(){
   return {
     isLoading: NotesStore.isLoading(),
-    notes: [].concat(NotesStore.getNotes())
+    notes: NotesStore.getNotes()
   };
 }
 

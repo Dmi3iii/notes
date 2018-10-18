@@ -11,7 +11,7 @@ class Note extends React.Component{
           <span className="Note__del-icon" onClick={this.props.onDelete}> x </span>
           {
             this.props.title?
-              <h4 className="Note__title">{this.props.title+'('+this.props._id+')'}</h4>
+              <h4 className="Note__title">{this.props.title}</h4>
               : null
 
           }

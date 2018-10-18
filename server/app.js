@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
 
 import {serverPort} from '../etc/config.json';
 
@@ -16,6 +17,7 @@ const allowCrossDomain = function(req, res, next) {
     next();
 }
 
+app.use(express.static('public'));
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
@@ -28,7 +30,12 @@ app.post('/notes',(req,res)=>{
 });
 
 app.delete('/notes/:id',(req,res)=>{
-  db.createNote(req.params.id).then(data => res.send(data));
+    db.deleteNote(req.params.id).then(data => res.send(data));
+});
+
+app.get('/',(req,res)=>{
+    //res.render('index.html');
+    res.sendFile(path.join(__dirname+'/../public/index.html'));
 });
 
 const server=app.listen(serverPort,()=>{

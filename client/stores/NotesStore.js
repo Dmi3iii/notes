@@ -5,7 +5,7 @@ import AppConstants from '../constants/AppConstants';
 
 const CHANGE_EVENT='change';
 
-let _notes={};
+let _notes=[];
 let _loadingError=null;
 let _isLoading=true;
 
