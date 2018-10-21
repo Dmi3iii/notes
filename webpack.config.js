@@ -48,8 +48,15 @@ module.exports = {
             },
             {
                 test: /\.jsx$/,
-                loader: "react-hot-loader-loader!babel-loader",
-                exclude: [/node_modules/, /public/]                
+                loaders: [
+                  "react-hot-loader-loader",
+                  { loader: 'babel-loader',
+                    options: {
+                        presets: ['env','react']
+                    }
+                  }
+                ],
+                exclude: [/node_modules/, /public/]
             }/*,
             {
                 test: /\.json$/,

@@ -25,5 +25,6 @@ export function createNote(data){
 }
 
 export function deleteNote(id){
-  return Note.findById(id).remove();
+  //return Note.findById(id).remove();
+  return Note.deleteOne({"_id": id});
 }
