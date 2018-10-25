@@ -10,7 +10,7 @@ export default{
   createNote(data){
     return axios.post(`${apiPrefix}/notes`, data);
   },
-  deleteNote(noteId){    
+  deleteNote(noteId){
     return axios.delete(`${apiPrefix}/notes/${noteId}`);
   }
 };

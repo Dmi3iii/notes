@@ -3,16 +3,9 @@ import {deleteNote} from '../actions/NotesActions';
 import './Note.less';
 
 class Note extends React.Component{
-  constructor(props){
-    super(props);
-    this.onDelete = this.onDelete.bind(this);
-  }
-    onDelete (e) {
-        //const id = this.props.key;
-        //console.log('e = ', e.currentTarget.dataset.noteid);
-        //this.props.dispatch(editNoteColor(color));
-        //console.log('id = ', id);
-        this.props.dispatch(deleteNote(e.currentTarget.dataset.noteid));
+
+    onDelete = (e)=>{
+        this.props.deleteNote(e.currentTarget.dataset.noteid);
     }
 
     render(){

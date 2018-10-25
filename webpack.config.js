@@ -14,11 +14,8 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/, /public/],
                 use:
-                  { loader: 'babel-loader',
-                    options: {
-                      presets: ['env','react']
+                  { loader: 'babel-loader'
                   }
-                }
             },
             {
                 test: /\.css$/,
@@ -50,11 +47,7 @@ module.exports = {
                 test: /\.jsx$/,
                 loaders: [
                   "react-hot-loader-loader",
-                  { loader: 'babel-loader',
-                    options: {
-                        presets: ['env','react']
-                    }
-                  }
+                  "babel-loader"
                 ],
                 exclude: [/node_modules/, /public/]
             }/*,

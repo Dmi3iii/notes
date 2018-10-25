@@ -26,8 +26,7 @@ class NotesGrid extends React.Component{
           className='NotesGrid'
           options={masonryOptions}
         >
-        {
-          this.props.notes.map(note=>
+        {this.props.notes.map(note=>
             <Note
               key={note._id}
               noteId={note._id}
@@ -47,7 +46,8 @@ class NotesGrid extends React.Component{
 
 function mapStateToProps(state){
   return {
-    notes: state._notes
+    notes: state._notes,
+    isLoading: state._isLoading
   }
 }
 

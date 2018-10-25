@@ -12,16 +12,12 @@ let notesReducer = (state=initialState,action) => {
   switch (action.type) {
     case Constants.LOAD_NOTES_REQUEST:
     {
-      return Object.assign({},state, {_loadingError:null, _isLoading:true, _notes:[]});
-    }
-      //return {...state, _loadingError:null, _isLoading:true, _notes:[]};
-    case Constants.LOAD_NOTES_SUCCESS:
-    {
-      return Object.assign({}, state, {_loadingError:null, _isLoading:false, _notes:action.notes});
+      //return Object.assign({},state, {_loadingError:null, _isLoading:true});
+      return {...state, _loadingError:null, _isLoading:true};
     }
     case Constants.LOAD_NOTES_SUCCESS:
     {
-      return Object.assign({}, state, {_loadingError:action.error, _isLoading:false, _notes:[]});
+      return {...state, _loadingError:null, _isLoading:false, _notes:action.notes};
     }
     case Constants.EDITING_NOTE_TITLE:
     {

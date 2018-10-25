@@ -6,61 +6,20 @@ import {editNoteTitle,editNoteText,editNoteColor,createNote} from '../actions/No
 import './NoteEditor.less';
 
 class NoteEditor extends Component{
-  constructor(props){
-    super(props);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleNoteAdd = this.handleNoteAdd.bind(this);
-  }
-  /*constructor(props){
-    super(props);
-    this.state={
-      title:'',
-      text:'',
-      color:'#FFFFFF'
-    };
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleNoteAdd = this.handleNoteAdd.bind(this);
-    this.handleColorChange = this.handleColorChange.bind(this);
-  }
 
-  handleTextChange(event) {
-    this.setState({text: event.target.value});
-  }
-
-  handleTitleChange(event){
-    this.setState({title: event.target.value});
-  }
-
-  handleNoteAdd(){
-    const newNote={
-      title: this.state.title,
-      text: this.state.text,
-      color: this.state.color
-    };
-
-    this.props.onNoteAdd(newNote);
-    this.setState({text:'',title:'',color:'#FFFFFF'});
-  }
-
-  handleColorChange(color){
-    this.setState({color});
-  }*/
-  handleTitleChange(event){
+  handleTitleChange = (event)=>{
     this.props.dispatch(editNoteTitle(event.target.value));
   }
 
-  handleTextChange(event){
+  handleTextChange = (event) => {
     this.props.dispatch(editNoteText(event.target.value));
   }
-  handleColorChange(color){
+  handleColorChange = (color)=>{
     console.log('color :',{color});
     this.props.dispatch(editNoteColor(color));
   }
 
-  handleNoteAdd(){
+  handleNoteAdd = () => {
     const newNote={
       title: this.props.title,
       text: this.props.text,
@@ -74,17 +33,20 @@ class NoteEditor extends Component{
   }
 
   render(){
+    const style={backgroundColor: this.props.color};
     return (
-      <div className="NoteEditor">
+      <div className="NoteEditor" style={style}>
         <input
           type='text'
           className='NoteEditor__title'
+          style={style}
           placeholder='Enter title'
           value={this.props.title}
           onChange={this.handleTitleChange}
         />
         <textarea
             className='NoteEditor__text'
+            style={style}
             placeholder='Enter note text'
             rows={5}
             value={this.props.text}
