@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-babel": "babel-node ./server/app.js",
-    "start-wp": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 3000 --host 0.0.0.0",
-    "build": "webpack --progress --colors --mode production",
+    "start-dev-server": "nodemon --exec babel-node ./server/app.js",
+    "start-dev-client": "webpack-dev-server --debug --open --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 3000 --host 127.0.0.1",
+    "build-server": "babel server --out-dir dist",
+    "build-client": "webpack --progress --colors --mode production",
+    "start-server": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -42,6 +44,7 @@
     "file-loader": "^2.0.0",
     "json-loader": "^0.5.7",
     "less-loader": "^4.1.0",
+    "nodemon": "^1.18.5",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.0.6",
