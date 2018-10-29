@@ -17,6 +17,10 @@
         .Note__del-icon {
             display: block;
         }
+
+        .Note__edit-icon {
+            display: block;
+        }
     }
 }
 
@@ -30,6 +34,23 @@
     top:5px;
     right:5px;
     display: none;
-    color: rgba(0,0,0,0.6);
+    color: rgba(255,0,0,0.9);
     cursor: pointer;
+
+    &:hover{
+      transform: scale(1.5);
+    }
+}
+
+.Note__edit-icon {
+    .Note__del-icon;
+    top:3px;
+    right:15px;
+    color: rgba(0,180,0,1);
+    font-weight: bold;
+    transform: scaleX(-1) rotate(10deg);
+
+    &:hover{
+      transform: scaleX(-1.5) scaleY(1.5) rotate(10deg);
+    }
 }

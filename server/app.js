@@ -33,6 +33,10 @@ app.delete('/notes/:id',(req,res)=>{
     db.deleteNote(req.params.id).then(data => res.send(data));
 });
 
+app.post('/notes/edit',(req,res)=>{
+    db.editNote(req.body).then(data => res.send(data));
+});
+
 app.get('/',(req,res)=>{
     //res.render('index.html');
     res.sendFile(path.join(__dirname+'/../public/index.html'));

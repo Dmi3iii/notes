@@ -28,3 +28,8 @@ export function deleteNote(id){
   //return Note.findById(id).remove();
   return Note.deleteOne({"_id": id});
 }
+
+export function editNote({id,title,text,color}){
+  //return Note.findById(id).remove();
+  return Note.updateOne({"_id": id},{title,text,color});
+}

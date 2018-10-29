@@ -14,14 +14,26 @@ export let editNoteColor = (color) =>{
     return {type:Constants.EDITING_NOTE_COLOR,
             color}
 }
-
+export let editNoteSet = (note) =>{
+  console.log('%cAction NoteSet:','color:red',note);
+  if(note)
+    return {type:Constants.EDITING_NOTE_SET, note}
+  else
+    return {type:Constants.EDITING_NOTE_SET}
+}
 export let createNote = (note) => {
-  console.log('create note:', note);
-  return dispatch => {
-    api.createNote(note)
-    .then(() => dispatch(loadNotes()))
-    .catch(err => console.error(err));
-  }
+  if(!note.id)
+    return dispatch => {
+      api.createNote(note)
+      .then(() => dispatch(loadNotes()))
+      .catch(err => console.error(err));
+    }
+  else
+    return dispatch => {
+      api.editNote(note)
+      .then(() => dispatch(loadNotes()))
+      .catch(err => console.error(err));
+    }
 }
 
 export let deleteNote = (noteId) => {

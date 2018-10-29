@@ -38,7 +38,7 @@
 
 .NoteEditor__footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -51,11 +51,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 0 160px;
+    flex: 0 0 80px;
     text-align: center;
     line-height: 1.3;
     font-size: 15px;
-    color: #fff;
     text-transform: uppercase;
     font-weight: 500;
     transition: all 100ms ease-in-out;
@@ -76,4 +75,14 @@
     &:focus {
         outline: 0;
     }
+}
+
+.disabled{
+  background: #eee;
+}
+
+.NoteEditor__button__cencel {
+  .NoteEditor__button;
+  background:#f55;
+  flex: 0 0 80px;
 }

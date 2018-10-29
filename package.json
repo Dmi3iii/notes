@@ -47,6 +47,7 @@
     "postcss-preset-env": "^6.0.6",
     "react-hot-loader": "^4.3.11",
     "react-hot-loader-loader": "0.0.6",
+    "redux-devtools-extension": "^2.13.5",
     "redux-logger": "^3.0.6",
     "style-loader": "^0.23.0",
     "sugarss": "^2.0.0",
