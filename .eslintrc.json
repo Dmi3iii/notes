@@ -5,7 +5,7 @@
         "es6": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": ["airbnb", "plugin:jest/recommended", "jest-enzyme","plugin:react/recommended"],
     "settings": {
       "react": {
         "createClass": "createReactClass",
@@ -15,6 +15,7 @@
       },
       "propWrapperFunctions": [ "forbidExtraProps" ]
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -23,25 +24,48 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "babel",
+        "import",
+        "jsx-a11y",
+        "react"//,
+        //"prettier"
     ],
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+      "arrow-parens": "off",
+      "object-curly-newline": "off",
+      "object-curly-spacing": "off",
+      "no-mixed-operators": "off",
+      "arrow-body-style": "off",
+      "function-paren-newline": "off",
+      "no-plusplus": "off",
+      "space-before-function-paren": 0,
+      "no-tabs": "off",
+
+      "max-len": ["warn", 100, 2, { "ignoreUrls": true }],
+      "no-console": "error",
+      "no-alert": "error",
+
+      "no-param-reassign": "off",
+      "radix": "off",
+
+      "react/require-default-props": "off",
+      "react/forbid-prop-types": "off",
+      "react/jsx-filename-extension": ["error", { "extensions": [".js",".jsx"] }],
+
+      "prefer-destructuring": "off",
+
+      "react/no-find-dom-node": "off",
+      "react/no-did-mount-set-state": "off",
+      "react/no-unused-prop-types": "off",
+      "react/jsx-one-expression-per-line": "off",
+
+      "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["to"] }],
+      "jsx-a11y/label-has-for": [2, {"required": {"every": ["id"]}}],
+      //"prettier/prettier": ["error"],
+      "indent": ["error", "tab"],
+      "linebreak-style": ["error", "unix"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error"
     }

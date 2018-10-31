@@ -4,11 +4,11 @@ import path from 'path';
 
 import {serverPort} from '../etc/config.json';
 
-import * as db from './utils/DataBaseUtils.js';
+import * as db from './utils/DataBaseUtils';
 
 db.setUpConnection();
 
-const app=express();
+const app = express();
 
 const allowCrossDomain = function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -21,27 +21,27 @@ app.use(express.static('public'));
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
-app.get('/notes',(req,res)=>{
+app.get('/notes', (req, res) => {
 	db.listNotes().then(data => res.send(data));
 });
 
-app.post('/notes',(req,res)=>{
+app.post('/notes', (req, res) => {
 	db.createNote(req.body).then(data => res.send(data));
 });
 
-app.delete('/notes/:id',(req,res)=>{
+app.delete('/notes/:id', (req, res) => {
 	db.deleteNote(req.params.id).then(data => res.send(data));
 });
 
-app.post('/notes/edit',(req,res)=>{
+app.post('/notes/edit', (req, res) => {
 	db.editNote(req.body).then(data => res.send(data));
 });
 
-app.get('/',(req,res)=>{
-	//res.render('index.html');
-	res.sendFile(path.join(__dirname+'/../public/index.html'));
+app.get('/', (req, res) => {
+	// res.render('index.html');
+	res.sendFile(path.join(`${__dirname}/../public/index.html`));
 });
 
-const server=app.listen(serverPort,()=>{ // eslint-disable-line no-unused-vars
+const server = app.listen(serverPort, () => { // eslint-disable-line no-unused-vars
 	console.log(`Server start on port ${serverPort}.`); // eslint-disable-line no-console
 });

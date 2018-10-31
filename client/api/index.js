@@ -4,16 +4,16 @@ import {apiPrefix} from '../../etc/config.json';
 
 
 export default{
-	listNotes(){
+	listNotes() {
 		return axios.get(`${apiPrefix}/notes`);
 	},
-	createNote(data){
+	createNote(data) {
 		return axios.post(`${apiPrefix}/notes`, data);
 	},
-	deleteNote(noteId){
+	deleteNote(noteId) {
 		return axios.delete(`${apiPrefix}/notes/${noteId}`);
 	},
-	editNote(data){
+	editNote(data) {
 		return axios.post(`${apiPrefix}/notes/edit`, data);
-	}
+	},
 };
