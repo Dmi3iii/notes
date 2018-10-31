@@ -11,3 +11,4 @@ data
 *.dat
 .vs
 dist/
+package-lock.json
