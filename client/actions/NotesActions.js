@@ -22,6 +22,32 @@ export const editNoteSet = (note) => {
 	if (note) { return {type: Constants.EDITING_NOTE_SET, note}; }
 	return {type: Constants.EDITING_NOTE_SET};
 };
+
+export const loadNotes = () => {
+	return (dispatch) => {
+		dispatch({
+			type: Constants.LOAD_NOTES_REQUEST
+		});
+
+		// setTimeout(()=>{
+		api.listNotes()
+			.then(({ data }) => {
+				dispatch({
+					type: Constants.LOAD_NOTES_SUCCESS,
+					notes: data});
+				// console.log('notes loaded',data);
+			},
+			)
+			.catch(err => {
+				dispatch({
+					type: Constants.LOAD_NOTES_FAIL,
+					error: err});
+			},
+			);
+		// }, 2000);
+	};
+};
+
 export const createNote = (note) => {
 	if (!note.id) {
 		return dispatch => {
@@ -42,30 +68,5 @@ export const deleteNote = (noteId) => {
 		api.deleteNote(noteId)
 			.then(() => dispatch(loadNotes()))
 			.catch(err => console.error(err)); // eslint-disable-line no-console
-	};
-};
-
-export let loadNotes = () => {
-	return (dispatch) => {
-		dispatch({
-			type: Constants.LOAD_NOTES_REQUEST,
-		});
-
-		// setTimeout(()=>{
-		api.listNotes()
-			.then(({ data }) => {
-				dispatch({
-					type: Constants.LOAD_NOTES_SUCCESS,
-					notes: data});
-				// console.log('notes loaded',data);
-			},
-			)
-			.catch(err => {
-				dispatch({
-					type: Constants.LOAD_NOTES_FAIL,
-					error: err});
-			},
-			);
-		// }, 2000);
 	};
 };

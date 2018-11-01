@@ -15,5 +15,5 @@ export default{
 	},
 	editNote(data) {
 		return axios.post(`${apiPrefix}/notes/edit`, data);
-	},
+	}
 };

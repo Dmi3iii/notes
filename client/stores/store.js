@@ -1,6 +1,7 @@
 import {createStore, applyMiddleware/* ,compose */} from 'redux';
 import thunk from 'redux-thunk';
-// import logger from 'redux-logger'; //вместо этого логгера, более функциональный redux-devtools-extension
+// вместо этого логгера, более функциональный redux-devtools-extension
+// import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import notesReducer from '../reducers/NoteReducers';
 

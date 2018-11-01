@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
 	mode: 'development',
-	entry: './client/main.jsx',
+	entry: './client/main.js',
 	output: {
 		path: __dirname + '/public/build/',
 		publicPath: 'build/',

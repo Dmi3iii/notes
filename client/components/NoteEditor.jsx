@@ -1,93 +1,113 @@
 import React, {Component} from 'react';
-import ColorPicker from './ColorPicker.jsx'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {editNoteTitle,editNoteText,editNoteColor,createNote,editNoteSet} from '../actions/NotesActions'
+import ColorPicker from './ColorPicker.jsx';
+import {editNoteTitle, editNoteText, editNoteColor,
+	createNote, editNoteSet} from '../actions/NotesActions';
 
 import './NoteEditor.less';
 
-class NoteEditor extends Component{
+class NoteEditor extends Component {
+	handleTitleChange = (event) => {
+		const {dispatch} = this.props;
+		dispatch(editNoteTitle(event.target.value));
+	}
 
-  handleTitleChange = (event)=>{
-    this.props.dispatch(editNoteTitle(event.target.value));
-  }
+	handleTextChange = (event) => {
+		const {dispatch} = this.props;
+		dispatch(editNoteText(event.target.value));
+	}
 
-  handleTextChange = (event) => {
-    this.props.dispatch(editNoteText(event.target.value));
-  }
-  handleColorChange = (color)=>{
-    console.log('color :',{color});
-    this.props.dispatch(editNoteColor(color));
-  }
-  handleNoteCencel = ()=>{
-    this.props.dispatch(editNoteSet());
-  }
-  handleNoteAdd = () => {
-    const newNote={
-      id: this.props.id,
-      title: this.props.title,
-      text: this.props.text,
-      color: this.props.color
-    };
-    console.log('new note', newNote);
-    this.props.dispatch(createNote(newNote));
-    this.props.dispatch(editNoteSet());
-  }
+	handleColorChange = (color) => {
+		// console.log('color :', {color});
+		const {dispatch} = this.props;
+		dispatch(editNoteColor(color));
+	}
 
-  render(){
-    const style={backgroundColor: this.props.color};
-    return (
-      <div className="NoteEditor" style={style}>
-        <input
-          type='text'
-          className='NoteEditor__title'
-          style={style}
-          placeholder='Введите заголовок'
-          value={this.props.title}
-          onChange={this.handleTitleChange}
-        />
-        <textarea
-            className='NoteEditor__text'
-            style={style}
-            placeholder='Введите текст заметки'
-            rows={5}
-            value={this.props.text}
-            onChange={this.handleTextChange}
-        />
-        <div className='NoteEditor__footer'>
-          <ColorPicker
-            value={this.props.color}
-            onChange={this.handleColorChange}
-          />
-          <button
-            className={!(this.props.text && this.props.title)?'NoteEditor__button disabled':'NoteEditor__button'}
-            disabled={!(this.props.text && this.props.title)}
-            onClick={this.handleNoteAdd}
-          >
-            {this.props.id?'Сохранить':'Добавить'}
-          </button>
-          {this.props.id?
-            <button
-              className='NoteEditor__button__cencel'
-              onClick={this.handleNoteCencel}
-            >
-              Отмена
-            </button>
-            : null
-          }
-        </div>
-      </div>
-    );
-  }
+	handleNoteCencel = () => {
+		const {dispatch} = this.props;
+		dispatch(editNoteSet());
+	}
+
+	handleNoteAdd = () => {
+		const {dispatch, id, title, text, color} = this.props;
+		const newNote = {id, title, text, color};
+		// console.log('new note', newNote);
+		dispatch(createNote(newNote));
+		dispatch(editNoteSet());
+	}
+
+	render() {
+		const {id, title, text, color} = this.props;
+		const style = {backgroundColor: color};
+		return (
+			<div className="NoteEditor" style={style}>
+				<input
+					type="text"
+					className="NoteEditor__title"
+					style={style}
+					placeholder="Введите заголовок"
+					value={title}
+					onChange={this.handleTitleChange}
+				/>
+				<textarea
+					className="NoteEditor__text"
+					style={style}
+					placeholder="Введите текст заметки"
+					rows={5}
+					value={text}
+					onChange={this.handleTextChange}
+				/>
+				<div className="NoteEditor__footer">
+					<ColorPicker
+						value={color}
+						onChange={this.handleColorChange}
+					/>
+					<button
+						className={!(text && title) ? 'NoteEditor__button disabled' : 'NoteEditor__button'}
+						type="button"
+						disabled={!(text && title)}
+						onClick={this.handleNoteAdd}
+					>
+						{id ? 'Сохранить' : 'Добавить'}
+					</button>
+					{id
+						? (
+							<button
+								className="NoteEditor__button__cencel"
+								type="button"
+								onClick={this.handleNoteCencel}
+							>
+							Отмена
+							</button>
+						)
+						: null
+					}
+				</div>
+			</div>
+		);
+	}
 }
 
-function mapStateToProps(store){
-  return {
-    id: store.editingNote.id,
-    title: store.editingNote.title,
-    text: store.editingNote.text,
-    color: store.editingNote.color
-  }
+function mapStateToProps(store) {
+	return {
+		id: store.editingNote.id,
+		title: store.editingNote.title,
+		text: store.editingNote.text,
+		color: store.editingNote.color
+	};
 }
+
+NoteEditor.propTypes = {
+	editNoteText: PropTypes.func,
+	editNoteTitle: PropTypes.func,
+	editNoteColor: PropTypes.func,
+	dispatch: PropTypes.func,
+	id: PropTypes.number,
+	title: PropTypes.string,
+	text: PropTypes.string,
+	color: PropTypes.string
+};
 
 
 export default connect(mapStateToProps)(NoteEditor);

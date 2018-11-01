@@ -5,7 +5,7 @@ const initialState = {
 		{_id: 2, title: 'test title 2', text: 'test text 2', color: '#CCFF90'}],
 	_loadingError: null,
 	_isLoading: false,
-	editingNote: {id: null, title: '', text: '', color: '#ffffff'},
+	editingNote: {id: null, title: '', text: '', color: '#ffffff'}
 };
 
 const notesReducer = (state = initialState, action) => {
