@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import './ColorPicker.less';
 
-const COLORS = ['#FFFFFF', '#80D8FF', '#FFFF8D', '#FF8A80', '#CCFF90', '#CFD8DC', '#FFD180'];
+const COLORS = ['#FFFFFF', '#80D8FF', '#FFFF8D', '#FF8A80',
+	'#CCFF90', '#CFD8DC', '#FFD180', '#C0FFEE'];
 
 class ColorPicker extends PureComponent {
 	render() {
