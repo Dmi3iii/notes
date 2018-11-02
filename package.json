@@ -9,8 +9,8 @@
 		"build-server": "babel server --out-dir dist",
 		"build-client": "webpack --progress --colors --mode production",
 		"start-server": "node dist/app.js",
-		"lint": ".\\node_modules\\.bin\\eslint ./**/*",
-		"lint-fix": ".\\node_modules\\.bin\\eslint --fix ./**/*",
+		"lint": ".\\node_modules\\.bin\\eslint ./**/*.{js,jsx}",
+		"lint-fix": ".\\node_modules\\.bin\\eslint --fix ./**/*.{js,jsx}",
 		"prettier": "prettier --write client/**/*.js client/**/*.jsx server/**/*.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
